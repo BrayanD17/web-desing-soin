@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>SOIN Soluciones Integrales - Dashboard</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --tw-bg-opacity: 1;
+        --soin-blue: 37 99 235;
+        --soin-blue-light: 239 246 255;
+        --soin-gray-text: 107 114 128;
+      }
+      .line-clamp-2 {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800" style='font-family: Inter, "Noto Sans", sans-serif;'>
+<div class="flex min-h-screen flex-col">
+<header class="sticky top-0 z-10 flex w-full items-center justify-between border-b border-gray-200 bg-white px-6 py-3 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white">
+<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 3H21L18 12L21 21H3L6 12L3 3Z" fill="currentColor"></path></svg>
+</div>
+<h1 class="text-lg font-bold text-gray-900">SOIN Soluciones Integrales</h1>
+</div>
+<nav class="hidden items-center gap-6 md:flex">
+<a class="relative text-sm font-medium text-blue-600 after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:w-full after:bg-blue-600" href="#">Notas</a>
+<a class="text-sm font-medium text-gray-600 hover:text-blue-600" href="#">Cierres de tickets</a>
+<a class="text-sm font-medium text-gray-600 hover:text-blue-600" href="#">Exportación</a>
+<a class="text-sm font-medium text-gray-600 hover:text-blue-600" href="#">Perfil</a>
+<a class="text-sm font-medium text-gray-600 hover:text-blue-600" href="#">Configuración</a>
+</nav>
+<div class="flex items-center gap-4">
+<button aria-label="Ayuda" class="flex h-9 w-9 items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+<span class="material-symbols-outlined text-xl">help</span>
+</button>
+<button class="relative">
+<img alt="Avatar de usuario" class="h-9 w-9 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwLfMc_NADB7lo5iEiTR4uATXST7S8In6uPe0k3V5n8w9gdi3nRYhq6Onn6kQDmvxiZVISvjm92fd7XCL5alTgAgh5efk7t_yu9oxYl_kpOaQGsMYwo00FAcnokEIqQ0LfPrAXAvZEWadlOY9x9q1caHbB_JlLHPqPA9Yw0l28bPdTUbbCEIvpdGU9lUoe8nd0IV-67aOtKs58LiBG2XGk2jv9vVEjCZ-sBSKu7R1CG0nK2kc2kpq9P6h2Q3XADaGDl_Y5Je-iYlTx"/>
+</button>
+</div>
+</header>
+<main class="flex-grow bg-white p-6 sm:p-8 md:p-10">
+<div class="mx-auto max-w-7xl">
+<div class="mb-6 space-y-4">
+<div class="relative">
+<span class="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"> search </span>
+<input class="w-full rounded-md border-gray-300 bg-gray-50 py-2 pl-10 pr-4 text-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Buscar por ticket, cliente o usuario..." type="search"/>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<button class="flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50">
+<span>Cliente</span>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<button class="flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50">
+<span>Estado</span>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+<button class="flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50">
+<span>Rango de fechas</span>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="sticky top-[61px] bg-gray-50">
+<tr>
+<th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Ticket</th>
+<th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Título</th>
+<th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Cliente</th>
+<th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Cola</th>
+<th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Usuario SOIN</th>
+<th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Asunto Nota</th>
+<th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Cuerpo Nota</th>
+<th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">Estado</th>
+<th class="flex items-center gap-1 px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500" scope="col">
+                    Creación Ticket
+                    <span class="material-symbols-outlined text-base">arrow_downward</span>
+</th>
+<th class="relative px-4 py-3" scope="col"><span class="sr-only">Acciones</span></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200 bg-white">
+<tr class="hover:bg-gray-50">
+<td class="whitespace-nowrap px-4 py-3 text-sm font-medium text-gray-900">#12345</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Problema de conectividad</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Acme Corp</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Soporte Técnico</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Laura García</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Seguimiento</td>
+<td class="max-w-xs px-4 py-3 text-sm text-gray-500">
+<p class="line-clamp-2" title="Se realizó seguimiento con el cliente. El problema persiste.">Se realizó seguimiento con el cliente. El problema persiste.</p>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm">
+<span class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800"> Work In Progress </span>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">2024-01-10 14:30</td>
+<td class="whitespace-nowrap px-4 py-3 text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="bg-gray-50 hover:bg-gray-100">
+<td class="whitespace-nowrap px-4 py-3 text-sm font-medium text-gray-900">#12346</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Error en la aplicación</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Tech Solutions</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Desarrollo</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Carlos López</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Investigación</td>
+<td class="max-w-xs px-4 py-3 text-sm text-gray-500">
+<p class="line-clamp-2" title="Se está investigando el error reportado en la aplicación.">Se está investigando el error reportado en la aplicación.</p>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm">
+<span class="inline-flex items-center rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-medium text-orange-800"> Pending Customer Info </span>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">2024-01-12 09:15</td>
+<td class="whitespace-nowrap px-4 py-3 text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="whitespace-nowrap px-4 py-3 text-sm font-medium text-gray-900">#12347</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Solicitud de nueva funcionalidad</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Global Services</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Ventas</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Ana Martínez</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Reunión</td>
+<td class="max-w-xs px-4 py-3 text-sm text-gray-500">
+<p class="line-clamp-2" title="Reunión con el cliente para discutir la nueva funcionalidad solicitada.">Reunión con el cliente para discutir la nueva funcionalidad solicitada.</p>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm">
+<span class="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800"> Closed </span>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">2024-01-14 11:45</td>
+<td class="whitespace-nowrap px-4 py-3 text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="bg-gray-50 hover:bg-gray-100">
+<td class="whitespace-nowrap px-4 py-3 text-sm font-medium text-gray-900">#12348</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Problema de acceso</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Innovate Systems</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Soporte Técnico</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Pedro Ramírez</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Resolución</td>
+<td class="max-w-xs px-4 py-3 text-sm text-gray-500">
+<p class="line-clamp-2" title="Se resolvió el problema de acceso del cliente.">Se resolvió el problema de acceso del cliente.</p>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm">
+<span class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800"> Work In Progress </span>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">2024-01-15 16:20</td>
+<td class="whitespace-nowrap px-4 py-3 text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="whitespace-nowrap px-4 py-3 text-sm font-medium text-gray-900">#12349</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Consulta sobre producto</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Future Tech</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Ventas</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Sofía Hernández</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Información</td>
+<td class="max-w-xs px-4 py-3 text-sm text-gray-500">
+<p class="line-clamp-2" title="Se proporcionó información detallada sobre el producto al cliente.">Se proporcionó información detallada sobre el producto al cliente.</p>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm">
+<span class="inline-flex items-center rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-medium text-orange-800"> Pending Customer Info </span>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">2024-01-17 10:00</td>
+<td class="whitespace-nowrap px-4 py-3 text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="bg-gray-50 hover:bg-gray-100">
+<td class="whitespace-nowrap px-4 py-3 text-sm font-medium text-gray-900">#12350</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Incidente de seguridad</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Secure Solutions</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Seguridad</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Javier Torres</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Análisis</td>
+<td class="max-w-xs px-4 py-3 text-sm text-gray-500">
+<p class="line-clamp-2" title="Se está analizando el incidente de seguridad reportado.">Se está analizando el incidente de seguridad reportado.</p>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm">
+<span class="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800"> Closed </span>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">2024-01-19 15:30</td>
+<td class="whitespace-nowrap px-4 py-3 text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="whitespace-nowrap px-4 py-3 text-sm font-medium text-gray-900">#12351</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Solicitud de cambio</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Dynamic Solutions</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Desarrollo</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">María Vargas</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Implementación</td>
+<td class="max-w-xs px-4 py-3 text-sm text-gray-500">
+<p class="line-clamp-2" title="Se está implementando el cambio solicitado por el cliente.">Se está implementando el cambio solicitado por el cliente.</p>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm">
+<span class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800"> Work In Progress </span>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">2024-01-20 12:15</td>
+<td class="whitespace-nowrap px-4 py-3 text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="bg-gray-50 hover:bg-gray-100">
+<td class="whitespace-nowrap px-4 py-3 text-sm font-medium text-gray-900">#12352</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Problema de rendimiento</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Efficient Systems</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Soporte Técnico</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Diego Castro</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Diagnóstico</td>
+<td class="max-w-xs px-4 py-3 text-sm text-gray-500">
+<p class="line-clamp-2" title="Se está realizando un diagnóstico del problema de rendimiento.">Se está realizando un diagnóstico del problema de rendimiento.</p>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm">
+<span class="inline-flex items-center rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-medium text-orange-800"> Pending Customer Info </span>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">2024-01-21 08:45</td>
+<td class="whitespace-nowrap px-4 py-3 text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="whitespace-nowrap px-4 py-3 text-sm font-medium text-gray-900">#12353</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Consulta sobre precios</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Value Services</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Ventas</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Isabel Rojas</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Cotización</td>
+<td class="max-w-xs px-4 py-3 text-sm text-gray-500">
+<p class="line-clamp-2" title="Se envió una cotización al cliente con los precios solicitados.">Se envió una cotización al cliente con los precios solicitados.</p>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm">
+<span class="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800"> Closed </span>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">2024-01-22 14:00</td>
+<td class="whitespace-nowrap px-4 py-3 text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="bg-gray-50 hover:bg-gray-100">
+<td class="whitespace-nowrap px-4 py-3 text-sm font-medium text-gray-900">#12354</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Error en la integración</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Prime Solutions</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Desarrollo</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Ricardo Mendoza</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">Corrección</td>
+<td class="max-w-xs px-4 py-3 text-sm text-gray-500">
+<p class="line-clamp-2" title="Se está corrigiendo el error en la integración reportado.">Se está corrigiendo el error en la integración reportado.</p>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm">
+<span class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800"> Work In Progress </span>
+</td>
+<td class="whitespace-nowrap px-4 py-3 text-sm text-gray-500">2024-01-23 11:30</td>
+<td class="whitespace-nowrap px-4 py-3 text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-6 flex items-center justify-between">
+<p class="text-sm text-gray-700">Mostrando <span class="font-medium">1</span> a <span class="font-medium">10</span> de <span class="font-medium">97</span> resultados</p>
+<div class="flex items-center gap-2">
+<button class="flex h-8 w-8 items-center justify-center rounded-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="flex h-8 w-8 items-center justify-center rounded-md border border-blue-500 bg-blue-50 text-sm font-medium text-blue-600">1</button>
+<button class="flex h-8 w-8 items-center justify-center rounded-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">2</button>
+<button class="flex h-8 w-8 items-center justify-center rounded-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">3</button>
+<span class="text-gray-500">...</span>
+<button class="flex h-8 w-8 items-center justify-center rounded-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">10</button>
+<button class="flex h-8 w-8 items-center justify-center rounded-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
