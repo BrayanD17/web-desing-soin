@@ -213,28 +213,47 @@ const download = (filename, text) => {
 
 // --- Eventos / Init ---
 document.addEventListener("DOMContentLoaded", () => {
-  // Asegura que la vista de previsualización esté visible
-  const previewView = document.getElementById("previewView");
-  if (previewView && previewView.classList.contains("hidden")) {
-    previewView.classList.remove("hidden");
+  const filtersView  = document.getElementById("filtersView");
+  const previewView  = document.getElementById("previewView");
+  const previewBody  = document.getElementById("previewBody");
+  const resultCount  = document.getElementById("resultCount");
+
+  const btnGenerar   = document.getElementById("btnGenerarVista");
+  const btnVolver    = document.getElementById("btnVolverFiltros");
+  const btnExportar  = document.getElementById("btnExportar");
+
+  // Mostrar solo filtros al inicio
+  if (filtersView)  filtersView.classList.remove("hidden");
+  if (previewView)  previewView.classList.add("hidden");
+
+  // Click: Generar vista -> renderiza y cambia de pantalla
+  if (btnGenerar) {
+    btnGenerar.addEventListener("click", () => {
+      // Renderiza 5 filas en orden invertido (ajusta si lo quieres directo)
+      const firstRows = [...rows].reverse().slice(0, 5);
+      previewBody.innerHTML = renderRows(firstRows);
+      if (resultCount) {
+        resultCount.textContent = `Mostrando ${firstRows.length} de ${rows.length} registros`;
+      }
+
+      // Cambiar pantallas
+      filtersView.classList.add("hidden");
+      previewView.classList.remove("hidden");
+    });
   }
 
-  // Renderizar 5 filas (ajusta si quieres otro número)
-  const previewBody = document.getElementById("previewBody");
-  const resultCount = document.getElementById("resultCount");
-  if (previewBody) {
-    const firstRows = rows.slice(0, 5);
-    previewBody.innerHTML = renderRows(firstRows);
-    if (resultCount) {
-      resultCount.textContent = `Mostrando ${firstRows.length} de ${rows.length} registros`;
-    }
+  // Click: Volver a filtros
+  if (btnVolver) {
+    btnVolver.addEventListener("click", () => {
+      previewView.classList.add("hidden");
+      filtersView.classList.remove("hidden");
+    });
   }
 
-  // Exportar data completa
-  const btnExportar = document.getElementById("btnExportar");
+  // Exportar (opcional: en el mismo orden invertido que la vista)
   if (btnExportar) {
     btnExportar.addEventListener("click", () => {
-      const csv = toCSV(rows);
+      const csv = toCSV(rows); // usa [...rows].reverse() si quieres exportar invertido
       download("soin_preview.csv", csv);
     });
   }
