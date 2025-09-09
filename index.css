@@ -57,3 +57,72 @@ table th, table td {
   padding-left: 1.25rem; /* px-5 */
   padding-right: 1.25rem;
 }
+
+/* --- Ajustes para ver la tabla completa en ancho --- */
+
+/* 1) Contenedor de página ancho completo */
+.page-container {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* 2) La tabla ocupa todo el ancho y se optimiza para caber */
+.table-fit {
+  width: 100%;
+  table-layout: auto;          /* que calcule anchos según contenido */
+  border-collapse: collapse;
+}
+
+/* Padding y tamaño de fuente más compactos para ganar espacio */
+.table-fit th,
+.table-fit td {
+  padding: 0.5rem 0.75rem;     /* más compacto que 0.75/1rem */
+  font-size: 0.8125rem;        /* ~13px */
+  vertical-align: top;
+}
+
+/* 3) En columnas largas, permite salto de línea */
+.table-fit .wrap {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Columnas que conviene mantener en una sola línea */
+.col-number,
+.col-customer,
+.col-queue,
+.col-user,
+.col-state,
+.col-timeunit,
+.col-created,
+.col-notecreated {
+  white-space: nowrap;
+}
+
+/* Limitar ancho de columnas verbosas en distintos tamaños */
+.col-title,
+.col-subject {
+  max-width: 36ch;
+}
+.col-body {
+  max-width: 48ch;
+}
+
+@media (min-width: 1280px) {
+  .col-title,
+  .col-subject {
+    max-width: 48ch;
+  }
+  .col-body {
+    max-width: 64ch;
+  }
+}
+
+/* Encabezado pegajoso (opcional) */
+thead th {
+  position: sticky;
+  top: 0;
+  background: #f9fafb;
+  z-index: 1;
+}

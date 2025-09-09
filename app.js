@@ -156,19 +156,19 @@ const renderRows = (data) =>
     .map(
       (r, i) => `
       <tr class="${i % 2 ? "bg-gray-50" : ""} hover:bg-gray-100">
-        <td class="td font-medium text-gray-900">${escapeHtml(r.ticket_number)}</td>
-        <td class="td">${escapeHtml(r.ticket_title)}</td>
-        <td class="td">${escapeHtml(r.customer)}</td>
-        <td class="td">${escapeHtml(r.queue_name)}</td>
-        <td class="td">${escapeHtml(r.soin_user)}</td>
-        <td class="td">${escapeHtml(r.note_subject)}</td>
-        <td class="td">
-          <p class="line-clamp-2" title="${escapeHtml(r.note_body)}">${escapeHtml(r.note_body)}</p>
+        <td class="td col-number">${escapeHtml(r.ticket_number)}</td>
+        <td class="td col-title wrap">${escapeHtml(r.ticket_title)}</td>
+        <td class="td col-customer">${escapeHtml(r.customer)}</td>
+        <td class="td col-queue">${escapeHtml(r.queue_name)}</td>
+        <td class="td col-user">${escapeHtml(r.soin_user)}</td>
+        <td class="td col-subject wrap">${escapeHtml(r.note_subject)}</td>
+        <td class="td col-body wrap">
+        <p class="line-clamp-2" title="${escapeHtml(r.note_body)}">${escapeHtml(r.note_body)}</p>
         </td>
-        <td class="td">${Number(r.note_time_unit) || 0}</td>
-        <td class="td">${escapeHtml(r.note_create_time)}</td>
-        <td class="td">${stateBadge(r.ticket_state)}</td>
-        <td class="td">${escapeHtml(r.ticket_create_time)}</td>
+        <td class="td col-timeunit">${Number(r.note_time_unit) || 0}</td>
+        <td class="td col-notecreated">${escapeHtml(r.note_create_time)}</td>
+        <td class="td col-state">${stateBadge(r.ticket_state)}</td>
+        <td class="td col-created">${escapeHtml(r.ticket_create_time)}</td>
       </tr>
     `
     )
@@ -213,29 +213,30 @@ const download = (filename, text) => {
 
 // --- Eventos / Init ---
 document.addEventListener("DOMContentLoaded", () => {
-  const filtersView = document.getElementById("filtersView");
+  // Asegura que la vista de previsualización esté visible
   const previewView = document.getElementById("previewView");
+  if (previewView && previewView.classList.contains("hidden")) {
+    previewView.classList.remove("hidden");
+  }
+
+  // Renderizar 5 filas (ajusta si quieres otro número)
   const previewBody = document.getElementById("previewBody");
-  const btnGenerar = document.getElementById("btnGenerarVista");
-  const btnVolver = document.getElementById("btnVolverFiltros");
-  const btnExportar = document.getElementById("btnExportar");
   const resultCount = document.getElementById("resultCount");
+  if (previewBody) {
+    const firstRows = rows.slice(0, 5);
+    previewBody.innerHTML = renderRows(firstRows);
+    if (resultCount) {
+      resultCount.textContent = `Mostrando ${firstRows.length} de ${rows.length} registros`;
+    }
+  }
 
-    btnGenerar.addEventListener("click", () => {
-        const firstRows = rows.slice(0, 5); // solo 5 filas
-        previewBody.innerHTML = renderRows(firstRows);
-        resultCount.textContent = `Mostrando ${firstRows.length} de ${rows.length} registros`;
-        filtersView.classList.add("hidden");
-        previewView.classList.remove("hidden");
+  // Exportar data completa
+  const btnExportar = document.getElementById("btnExportar");
+  if (btnExportar) {
+    btnExportar.addEventListener("click", () => {
+      const csv = toCSV(rows);
+      download("soin_preview.csv", csv);
     });
-
-  btnVolver?.addEventListener("click", () => {
-    previewView.classList.add("hidden");
-    filtersView.classList.remove("hidden");
-  });
-
-  btnExportar?.addEventListener("click", () => {
-    const csv = toCSV(rows);
-    download("soin_preview.csv", csv);
-  });
+  }
 });
+
