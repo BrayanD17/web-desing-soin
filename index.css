@@ -1,0 +1,59 @@
+:root {
+  --primary-color: #1380ec;
+}
+
+body {
+  font-family: 'Inter', 'Noto Sans', sans-serif;
+}
+
+/* Material Symbols peso normal */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Utilidad: line-clamp-2 (porque el plugin de Tailwind line-clamp no está activado por CDN) */
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* Helpers para la tabla/paginación usando Tailwind + clases propias cortas */
+.th {
+  padding: 0.75rem 1rem;           /* px-4 py-3 */
+  text-align: left;                /* text-left */
+  font-size: 0.75rem;              /* text-xs */
+  font-weight: 500;                /* font-medium */
+  letter-spacing: 0.05em;          /* tracking-wider aproximado */
+  text-transform: uppercase;       /* uppercase */
+  color: rgb(107 114 128);         /* text-gray-500 */
+}
+
+.td {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;             /* text-sm */
+  color: rgb(55 65 81);            /* text-gray-700 */
+}
+
+.pager-btn {
+  display: flex;
+  width: 2rem; height: 2rem;       /* h-8 w-8 */
+  align-items: center; justify-content: center;
+  border-radius: 0.375rem;         /* rounded-md */
+  border: 1px solid rgb(209 213 219); /* border-gray-300 */
+  background: white;
+  font-size: 0.875rem;
+  color: rgb(107 114 128);
+}
+.pager-btn:hover { background: rgb(249 250 251); } /* hover:bg-gray-50 */
+.pager-btn.active {
+  border-color: rgb(59 130 246);   /* border-blue-500 */
+  background: rgb(239 246 255);    /* bg-blue-50 */
+  color: rgb(37 99 235);           /* text-blue-600 */
+}
+
+table th, table td {
+  padding-left: 1.25rem; /* px-5 */
+  padding-right: 1.25rem;
+}
