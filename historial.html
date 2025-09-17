@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestión de Tickets — Historial</title>
+
+  <!-- Tipografía e íconos -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
+  <!-- Tailwind por CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="./index.css"/>
+</head>
+<body class="bg-page text-textPrimary">
+  <div class="min-h-screen flex flex-col">
+
+    <!-- Header (se mantiene, se oculta la línea de ayuda) -->
+    <header class="bg-primary text-white shadow-sm">
+      <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+        <!-- Marca SOIN (logo + frase) -->
+        <div class="flex items-center gap-3">
+          <img src="soin_icon.svg" class="h-10 w-10 filter brightness-0 invert" alt="SOIN" />
+          <span class="hidden sm:inline text-sm font-medium tracking-wide">SOIN Soluciones Integrales</span>
+        </div>
+
+        <!-- Título centrado -->
+        <div class="flex-1 text-center">
+          <h1 class="text-2xl sm:text-3xl font-bold">Gestión de Tickets</h1>
+          <!-- <p class="text-white/80 text-sm sm:text-base mt-1">Seleccione una acción o cargue resultados previos</p> -->
+        </div>
+
+        <div class="w-10 h-10"></div>
+      </div>
+    </header>
+
+    <!-- Contenido -->
+    <main class="container mx-auto flex-grow px-6 py-8">
+      <div class="mb-6">
+        <h2 class="text-2xl font-semibold">Historial de ticket — Filtros</h2>
+        <p class="text-sm text-gray-600 mt-1">Combine filtros para refinar la búsqueda. Los campos no seleccionados se ignoran.</p>
+      </div>
+
+      <!-- Panel de filtros -->
+      <form id="historial-form" class="rounded-xl border border-border bg-surface p-6 shadow-sm">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Columna izquierda -->
+          <div class="lg:col-span-6 space-y-6">
+
+            <!-- Listado de tickets (múltiples) -->
+            <div>
+              <label for="ticketsLista" class="block text-sm font-medium mb-1">Listado de tickets (varios códigos)</label>
+              <textarea id="ticketsLista" name="ticketsLista" rows="3" placeholder="Ej.: 41018, 41019, 41021&#10;o pega una lista separada por línea/espacios"
+                        class="w-full rounded-md border-border"></textarea>
+              <p class="text-xs text-gray-500 mt-1">Separa por coma, espacio o saltos de línea.</p>
+            </div>
+
+            <!-- Ticket específico -->
+            <div>
+              <label for="ticketEspecifico" class="block text-sm font-medium mb-1">Ticket específico</label>
+              <input id="ticketEspecifico" name="ticketEspecifico" type="text" placeholder="Ej.: 41018"
+                     class="w-full rounded-md border-border"/>
+            </div>
+
+            <!-- Cliente -->
+            <div>
+              <label for="cliente" class="block text-sm font-medium mb-1">Cliente</label>
+              <select id="cliente" name="cliente" class="w-full rounded-md border-border">
+                <option value="">Todos los clientes</option>
+                <option>CENCINAI</option>
+                <option>ARESEP</option>
+                <option>PANI</option>
+                <option>CONAVI</option>
+                <option>INDER</option>
+                <option>SENARA</option>
+                <option>CTP</option>
+                <option>MSJ</option>
+                <option>DGAVC</option>
+                <option>SUTEL</option>
+                <option>911_SOIN</option>
+                <option>FND</option>
+                <option>IAFA</option>
+              </select>
+            </div>
+
+            <!-- Estado por NOMBRE -->
+            <div>
+              <label for="estadoNombre" class="block text-sm font-medium mb-1">Estado por nombre</label>
+              <select id="estadoNombre" name="estadoNombre" class="w-full rounded-md border-border">
+                <option value="">Todos</option>
+                <option value="new">new</option>
+                <option value="closed successful">closed successful</option>
+                <option value="closed unsuccessful">closed unsuccessful</option>
+                <option value="open">open</option>
+                <option value="removed">removed</option>
+                <option value="pending reminder">pending reminder</option>
+                <option value="pending auto close+">pending auto close+</option>
+                <option value="pending auto close-">pending auto close-</option>
+                <option value="merged">merged</option>
+                <option value="closed with workaround">closed with workaround</option>
+                <option value="En_Curso">En_Curso</option>
+                <option value="Esperando Release Manager">Esperando Release Manager</option>
+                <option value="Pending Customer Accept">Pending Customer Accept</option>
+                <option value="Pending Customer Info">Pending Customer Info</option>
+                <option value="Pending Customer RCA">Pending Customer RCA</option>
+                <option value="Pending RFC">Pending RFC</option>
+                <option value="Pending Third-Party">Pending Third-Party</option>
+                <option value="Re-Open">Re-Open</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Work In Progress">Work In Progress</option>
+              </select>
+              <p class="text-xs text-gray-500 mt-1">Si eliges un estado por nombre, se ignorará el estado por ID (y viceversa).</p>
+            </div>
+
+            <!-- Estado por ID -->
+            <div>
+              <label for="estadoId" class="block text-sm font-medium mb-1">Estado por ID</label>
+              <select id="estadoId" name="estadoId" class="w-full rounded-md border-border">
+                <option value="">Todos</option>
+                <option value="1">1 — new</option>
+                <option value="2">2 — closed successful</option>
+                <option value="3">3 — closed unsuccessful</option>
+                <option value="4">4 — open</option>
+                <option value="5">5 — removed</option>
+                <option value="6">6 — pending reminder</option>
+                <option value="7">7 — pending auto close+</option>
+                <option value="8">8 — pending auto close-</option>
+                <option value="9">9 — merged</option>
+                <option value="10">10 — closed with workaround</option>
+                <option value="11">11 — En_Curso</option>
+                <option value="12">12 — Esperando Release Manager</option>
+                <option value="13">13 — Pending Customer Accept</option>
+                <option value="14">14 — Pending Customer Info</option>
+                <option value="15">15 — Pending Customer RCA</option>
+                <option value="16">16 — Pending RFC</option>
+                <option value="17">17 — Pending Third-Party</option>
+                <option value="18">18 — Re-Open</option>
+                <option value="19">19 — Rejected</option>
+                <option value="20">20 — Work In Progress</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- Columna derecha -->
+          <div class="lg:col-span-6 space-y-6">
+
+            <!-- Rango de fechas - creación ticket -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="fechaTicketInicio" class="block text-sm font-medium mb-1">Creación de ticket — desde</label>
+                <input id="fechaTicketInicio" name="fechaTicketInicio" type="date" class="w-full rounded-md border-border"/>
+              </div>
+              <div>
+                <label for="fechaTicketFin" class="block text-sm font-medium mb-1">Creación de ticket — hasta</label>
+                <input id="fechaTicketFin" name="fechaTicketFin" type="date" class="w-full rounded-md border-border"/>
+              </div>
+            </div>
+
+            <!-- Rango de fechas - cierre ticket -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="fechaCierreInicio" class="block text-sm font-medium mb-1">Cierre de ticket — desde</label>
+                <input id="fechaCierreInicio" name="fechaCierreInicio" type="date" class="w-full rounded-md border-border"/>
+              </div>
+              <div>
+                <label for="fechaCierreFin" class="block text-sm font-medium mb-1">Cierre de ticket — hasta</label>
+                <input id="fechaCierreFin" name="fechaCierreFin" type="date" class="w-full rounded-md border-border"/>
+              </div>
+            </div>
+
+            <!-- Rango de fechas - creación de historia -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="fechaHistInicio" class="block text-sm font-medium mb-1">Creación de historia — desde</label>
+                <input id="fechaHistInicio" name="fechaHistInicio" type="date" class="w-full rounded-md border-border"/>
+              </div>
+              <div>
+                <label for="fechaHistFin" class="block text-sm font-medium mb-1">Creación de historia — hasta</label>
+                <input id="fechaHistFin" name="fechaHistFin" type="date" class="w-full rounded-md border-border"/>
+              </div>
+            </div>
+
+            <!-- Historia completa / Datos relevantes -->
+            <div>
+              <span class="block text-sm font-medium mb-2">Tipo de salida</span>
+              <div class="flex flex-wrap items-center gap-4">
+                <label class="inline-flex items-center gap-2">
+                  <input type="radio" name="detalle" value="completa" class="rounded border-border" checked>
+                  <span>Historia completa</span>
+                </label>
+                <label class="inline-flex items-center gap-2">
+                  <input type="radio" name="detalle" value="relevante" class="rounded border-border">
+                  <span>Datos relevantes de la historia</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Acciones -->
+            <div class="flex flex-wrap items-center gap-3">
+              <button type="submit" class="btn-primary">Aplicar filtros</button>
+              <button type="reset" class="btn-ghost">Limpiar</button>
+            </div>
+
+          </div>
+        </div>
+      </form>
+
+      <!-- Contenedor de resultados (placeholder) -->
+      <section id="resultados" class="mt-8">
+        <div class="rounded-xl border border-border bg-surface p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold">Resultados</h3>
+            <span id="resumen-filtros" class="text-sm text-gray-600">Sin filtros aplicados</span>
+          </div>
+          <p class="text-sm text-gray-500">Aquí se renderizarán los resultados del historial de ticket según los filtros.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+  <script>
+    // JS mínimo (opcional): que estadoNombre y estadoId sean excluyentes
+    (function(){
+      const estadoNombre = document.getElementById('estadoNombre');
+      const estadoId = document.getElementById('estadoId');
+      function exclusividad(e) {
+        if (e.target === estadoNombre && estadoNombre.value) {
+          estadoId.value = '';
+        } else if (e.target === estadoId && estadoId.value) {
+          estadoNombre.value = '';
+        }
+      }
+      estadoNombre.addEventListener('change', exclusividad);
+      estadoId.addEventListener('change', exclusividad);
+
+      // Mostrar pequeño resumen de filtros (placeholder)
+      const form = document.getElementById('historial-form');
+      const resumen = document.getElementById('resumen-filtros');
+      form.addEventListener('submit', (ev) => {
+        ev.preventDefault();
+        const data = new FormData(form);
+        const partes = [];
+        const tl = (data.get('ticketsLista') || '').trim();
+        const te = (data.get('ticketEspecifico') || '').trim();
+        if (tl) partes.push('Lista de tickets');
+        if (te) partes.push(`Ticket: ${te}`);
+        const cliente = data.get('cliente') || 'Todos';
+        partes.push(`Cliente: ${cliente}`);
+        const estNom = data.get('estadoNombre') || '';
+        const estId  = data.get('estadoId') || '';
+        if (estNom) partes.push(`Estado (nombre): ${estNom}`);
+        if (estId)  partes.push(`Estado (ID): ${estId}`);
+        const detalle = data.get('detalle') === 'relevante' ? 'Datos relevantes' : 'Historia completa';
+        partes.push(detalle);
+        resumen.textContent = partes.join(' · ');
+        // Aquí podrías llamar a tu endpoint y pintar resultados en #resultados
+      });
+    })();
+  </script>
+</body>
+</html>

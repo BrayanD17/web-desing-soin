@@ -1,16 +1,25 @@
-/* Placeholder para lógica futura:
-   - Navegación a Pantalla 2
-   - Cargar sesiones previas desde API
-   - Persistencia local (localStorage) para “Resultados previos”
+/* Navegación entre pantallas por data-action
+   - notas     -> (placeholder) notas.html
+   - cierre    -> (placeholder) cierre.html
+   - historial -> historial.html (ya creada)
 */
 
-// Ejemplo de hook para click (descomentá y adapta cuando tengas rutas/estados)
+const ROUTES = {
+  notas: 'notas.html',        // cuando tengas esta pantalla, crea el archivo
+  cierre: 'cierre.html',      // cuando tengas esta pantalla, crea el archivo
+  historial: 'historial.html' // ya implementada
+};
+
 document.addEventListener('click', (e) => {
-  const target = e.target.closest('.card-action');
-  if (target) {
-    // TODO: navegar a la pantalla correspondiente (Notas / Cierre / Historia)
-    // e.g., window.location.href = '/pantalla-2.html?accion=notas'
-    // o disparar un modal / sección dinámica.
-    // console.log('Acción seleccionada');
+  const btn = e.target.closest('[data-action]');
+  if (!btn) return;
+
+  const action = btn.getAttribute('data-action');
+  const href = ROUTES[action];
+
+  if (href) {
+    // Puedes pasar un query param si quieres saber desde dónde llegó:
+    // window.location.href = `${href}?from=index`;
+    window.location.href = href;
   }
 });
