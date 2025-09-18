@@ -70,7 +70,7 @@
           </div>
         </section>
 
-                <!-- Sección agrupada: Sesiones Favoritas y Resultados Previos -->
+        <!-- Sección agrupada: Sesiones Favoritas y Resultados Previos -->
         <section class="flex flex-col gap-10">
           <!-- Sesiones favoritas -->
           <div class="rounded-xl border border-border bg-surface p-6 shadow-sm">
@@ -90,14 +90,14 @@
                     <button class="btn-execute" title="Ejecutar sesión">
                       <span class="material-symbols-outlined">play_arrow</span>
                     </button>
-                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
-                      <span class="material-symbols-outlined">delete</span>
-                    </button>
                     <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión">
                       <span class="material-symbols-outlined">edit</span>
                     </button>
                     <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión">
                       <span class="material-symbols-outlined">content_copy</span>
+                    </button>
+                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
+                      <span class="material-symbols-outlined">delete</span>
                     </button>
                   </div>
                 </li>
@@ -110,14 +110,14 @@
                     <button class="btn-execute" title="Ejecutar sesión">
                       <span class="material-symbols-outlined">play_arrow</span>
                     </button>
-                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
-                      <span class="material-symbols-outlined">delete</span>
-                    </button>
                     <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión">
                       <span class="material-symbols-outlined">edit</span>
                     </button>
                     <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión">
                       <span class="material-symbols-outlined">content_copy</span>
+                    </button>
+                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
+                      <span class="material-symbols-outlined">delete</span>
                     </button>
                   </div>
                 </li>
@@ -130,14 +130,14 @@
                     <button class="btn-execute" title="Ejecutar sesión">
                       <span class="material-symbols-outlined">play_arrow</span>
                     </button>
-                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
-                      <span class="material-symbols-outlined">delete</span>
-                    </button>
                     <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión">
                       <span class="material-symbols-outlined">edit</span>
                     </button>
                     <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión">
                       <span class="material-symbols-outlined">content_copy</span>
+                    </button>
+                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
+                      <span class="material-symbols-outlined">delete</span>
                     </button>
                   </div>
                 </li>
@@ -150,14 +150,14 @@
                     <button class="btn-execute" title="Ejecutar sesión">
                       <span class="material-symbols-outlined">play_arrow</span>
                     </button>
-                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
-                      <span class="material-symbols-outlined">delete</span>
-                    </button>
                     <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión">
                       <span class="material-symbols-outlined">edit</span>
                     </button>
                     <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión">
                       <span class="material-symbols-outlined">content_copy</span>
+                    </button>
+                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
+                      <span class="material-symbols-outlined">delete</span>
                     </button>
                   </div>
                 </li>
@@ -170,14 +170,14 @@
                     <button class="btn-execute" title="Ejecutar sesión">
                       <span class="material-symbols-outlined">play_arrow</span>
                     </button>
-                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
-                      <span class="material-symbols-outlined">delete</span>
-                    </button>
                     <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión">
                       <span class="material-symbols-outlined">edit</span>
                     </button>
                     <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión">
                       <span class="material-symbols-outlined">content_copy</span>
+                    </button>
+                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
+                      <span class="material-symbols-outlined">delete</span>
                     </button>
                   </div>
                 </li>
@@ -190,14 +190,14 @@
                     <button class="btn-execute" title="Ejecutar sesión">
                       <span class="material-symbols-outlined">play_arrow</span>
                     </button>
-                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
-                      <span class="material-symbols-outlined">delete</span>
-                    </button>
                     <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión">
                       <span class="material-symbols-outlined">edit</span>
                     </button>
                     <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión">
                       <span class="material-symbols-outlined">content_copy</span>
+                    </button>
+                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
+                      <span class="material-symbols-outlined">delete</span>
                     </button>
                   </div>
                 </li>
@@ -205,39 +205,74 @@
               </ul>
             </div>
           </div>
-
-          <!-- Resultados previos (desplegable) -->
+          <!-- Sección "Sesiones Guardadas" (Desplegable) -->
           <div class="flex flex-col">
-            <div class="mb-2 flex items-center gap-3 cursor-pointer" id="toggleResults">
-              <h2 class="text-2xl font-semibold">Resultados previos</h2>
-              <span class="chip">Seleccionar resultado anterior</span>
+            <div class="mb-2 flex items-center gap-3 cursor-pointer" id="toggleSavedSessions">
+              <h2 class="text-2xl font-semibold">Sesiones Guardadas</h2>
+              <span class="chip">Seleccionar sesión guardada</span>
               <!-- Flecha para desplegar/ocultar -->
-              <span id="toggleIcon" class="material-symbols-outlined">expand_more</span>
+              <span id="toggleSavedIcon" class="material-symbols-outlined">expand_more</span>
             </div>
-            <div id="resultsPrevios" class="hidden rounded-xl border border-border bg-surface p-6 shadow-sm">
+            <div id="savedSessions" class="hidden rounded-xl border border-border bg-surface p-6 shadow-sm">
               <div class="custom-scrollbar max-h-96 overflow-y-auto pr-2">
                 <ul class="divide-y divide-border">
                   <li class="item flex justify-between items-center">
                     <div>
-                      <p class="item-title">Historial SENARA 44056</p>
+                      <p class="item-title">Historial 911_SOIN 23056</p>
                       <p class="item-meta">15/09/2025 • 10:45</p>
                     </div>
                     <div class="flex gap-2">
-                      <button class="btn-execute" title="Ejecutar sesión">
+                      <button class="btn-execute" title="Ejecutar sesión guardada">
                         <span class="material-symbols-outlined">play_arrow</span>
                       </button>
-                      <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
-                        <span class="material-symbols-outlined">delete</span>
-                      </button>
-                      <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión">
+                      <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión guardada">
                         <span class="material-symbols-outlined">edit</span>
                       </button>
-                      <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión">
+                      <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión guardada">
                         <span class="material-symbols-outlined">content_copy</span>
+                      </button>
+                      <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión guardada">
+                        <span class="material-symbols-outlined">delete</span>
                       </button>
                     </div>
                   </li>
-                  <!-- Repite las demás sesiones aquí -->
+                  <!-- Repite las demás sesiones guardadas aquí -->
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Sección "Resultados previos" (Desplegable) -->
+          <div class="flex flex-col">
+            <div class="mb-2 flex items-center gap-3 cursor-pointer" id="toggleResultPrevios">
+              <h2 class="text-2xl font-semibold">Resultados previos</h2>
+              <span class="chip">Seleccione un resultado previo</span>
+              <!-- Flecha para desplegar/ocultar -->
+              <span id="toggleResultIcon" class="material-symbols-outlined">expand_more</span>
+            </div>
+            <div id="resultPrevios" class="hidden rounded-xl border border-border bg-surface p-6 shadow-sm">
+              <div class="custom-scrollbar max-h-96 overflow-y-auto pr-2">
+                <ul class="divide-y divide-border">
+                  <li class="item flex justify-between items-center">
+                    <div>
+                      <p class="item-title">Historial IAFA 44056</p>
+                      <p class="item-meta">15/09/2025 • 10:45</p>
+                    </div>
+                    <div class="flex gap-2">
+                      <button class="btn-execute" title="Ejecutar sesión guardada">
+                        <span class="material-symbols-outlined">play_arrow</span>
+                      </button>
+                      <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión guardada">
+                        <span class="material-symbols-outlined">edit</span>
+                      </button>
+                      <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión guardada">
+                        <span class="material-symbols-outlined">content_copy</span>
+                      </button>
+                      <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión guardada">
+                        <span class="material-symbols-outlined">delete</span>
+                      </button>
+                    </div>
+                  </li>
+                  <!-- Repite las demás sesiones guardadas aquí -->
                 </ul>
               </div>
             </div>

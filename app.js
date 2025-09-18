@@ -23,16 +23,28 @@ document.addEventListener('click', (e) => {
     window.location.href = href;
   }
 });
+
 // Maneja el toggle de la sección "Resultados previos"
-document.getElementById('toggleResults').addEventListener('click', function() {
-  const results = document.getElementById('resultsPrevios');
-  const icon = document.getElementById('toggleIcon');
+document.getElementById('toggleResultPrevios').addEventListener('click', function() {
+  const savedSessions = document.getElementById('resultPrevios');
+  const icon = document.getElementById('toggleResultIcon');
   
   // Cambia el estado de visibilidad
-  results.classList.toggle('hidden');
+  savedSessions.classList.toggle('hidden');
   
   // Cambia la flecha (abre/cierra)
-  icon.textContent = results.classList.contains('hidden') ? 'expand_more' : 'expand_less';
+  icon.textContent = savedSessions.classList.contains('hidden') ? 'expand_more' : 'expand_less';
 });
 
 
+// Maneja el toggle de la sección "Sesiones guardadas"
+document.getElementById('toggleSavedSessions').addEventListener('click', function() {
+  const savedSessions = document.getElementById('savedSessions');
+  const icon = document.getElementById('toggleSavedIcon');
+  
+  // Cambia el estado de visibilidad
+  savedSessions.classList.toggle('hidden');
+  
+  // Cambia la flecha (abre/cierra)
+  icon.textContent = savedSessions.classList.contains('hidden') ? 'expand_more' : 'expand_less';
+});
