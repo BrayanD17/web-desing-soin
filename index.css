@@ -259,3 +259,94 @@ button[title]:hover::after {
 #toggleResults {
   cursor: pointer;
 }
+
+/* Botón con iconos y texto alineados */
+.btn-save, .btn-favorite, .btn-export {
+  background: none;  /* Sin fondo */
+  color: white;
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background 120ms ease;
+  border: none;
+  display: flex;
+  align-items: center; /* Alinea los elementos verticalmente */
+  justify-content: center; /* Alinea los elementos horizontalmente */
+  gap: 0.5rem;  /* Espacio entre el ícono y el texto */
+}
+
+/* Botón con iconos y texto alineados */
+.btn-save, .btn-favorite, .btn-export {
+  background: none;  /* Mantener sin fondo para empezar */
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background 120ms ease;
+  border: none;
+  display: flex;
+  align-items: center; /* Alinea los elementos verticalmente */
+  justify-content: center; /* Alinea los elementos horizontalmente */
+  gap: 0.5rem;  /* Espacio entre el ícono y el texto */
+}
+
+/* Botón Guardar (verde) */
+.btn-save {
+  background: var(--accent-green);  /* Fondo verde */
+}
+
+.btn-save:hover {
+  background: var(--accent-green-dark); /* Hover verde más oscuro */
+}
+
+/* Botón Guardar como favorito (amarillo) */
+.btn-favorite {
+  background: var(--accent-yellow);  /* Fondo amarillo */
+}
+
+.btn-favorite:hover {
+  background: var(--accent-yellow-dark); /* Hover amarillo más oscuro */
+}
+
+/* Botón Exportar a Excel (azul) */
+.btn-export {
+  background: var(--primary-color);  /* Fondo azul */
+}
+
+.btn-export:hover {
+  background: var(--primary-color-600); /* Hover azul más oscuro */
+}
+
+/* Estilo para los iconos dentro de los botones */
+.material-symbols-outlined {
+  font-size: 1.25rem; /* Tamaño de ícono ajustado */
+  display: inline-block;
+  vertical-align: middle; /* Alinea el icono con el texto */
+}
+
+/* Estilo del título editable */
+.editable-title {
+  display: inline-block;
+  max-width: 100%;
+  font-size: 1.125rem;
+  padding: 0;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.editable-title:empty:before {
+  content: "Sin título"; /* Placeholder cuando está vacío */
+  color: #aaa;
+}
+
+/* Estilo de la flecha de edición */
+#editIcon {
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+
+#editIcon:hover {
+  color: var(--accent-green); /* Cambio de color al pasar el mouse */
+}

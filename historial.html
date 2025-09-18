@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gestión de Tickets — Historial</title>
+  <title>Gestión Integral de Servicios</title>
 
   <!-- Tipografía e íconos -->
   <link rel="preconnect" href="https://fonts.gstatic.com/"/>
@@ -30,7 +30,7 @@
 
         <!-- Título centrado -->
         <div class="flex-1 text-center">
-          <h1 class="text-2xl sm:text-3xl font-bold">Gestión de Tickets</h1>
+          <h1 class="text-2xl sm:text-3xl font-bold">Gestión Integral de Servicios</h1>
           <!-- <p class="text-white/80 text-sm sm:text-base mt-1">Seleccione una acción o cargue resultados previos</p> -->
         </div>
 
@@ -45,122 +45,222 @@
         <p class="text-sm text-gray-600 mt-1">Combine filtros para refinar la búsqueda. Los campos no seleccionados se ignoran.</p>
       </div>
 
-      <!-- Panel de filtros -->
-      <form id="historial-form" class="rounded-xl border border-border bg-surface p-6 shadow-sm">
+        <!-- Panel de filtros -->
+        <form id="historial-form" class="rounded-xl border border-border bg-surface p-6 shadow-sm">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <!-- Columna izquierda -->
-          <div class="lg:col-span-6 space-y-6">
+            <!-- Columna izquierda -->
+            <div class="lg:col-span-6 space-y-6">
 
             <!-- Listado de tickets (múltiples) -->
             <div>
-              <label for="ticketsLista" class="block text-sm font-medium mb-1">Listado de tickets (varios códigos)</label>
-              <textarea id="ticketsLista" name="ticketsLista" rows="3" placeholder="Ej.: 41018, 41019, 41021&#10;o pega una lista separada por línea/espacios"
+                <label for="ticketsLista" class="block text-sm font-medium mb-1">Listado de tickets (varios códigos)</label>
+                <textarea id="ticketsLista" name="ticketsLista" rows="3" placeholder="Ej.: 41018, 41019, 41021&#10;o pega una lista separada por línea/espacios"
                         class="w-full rounded-md border-border"></textarea>
-              <p class="text-xs text-gray-500 mt-1">Separa por coma, espacio o saltos de línea.</p>
+                <p class="text-xs text-gray-500 mt-1">Separa por coma, espacio o saltos de línea.</p>
             </div>
 
             <!-- Ticket específico -->
             <div>
-              <label for="ticketEspecifico" class="block text-sm font-medium mb-1">Ticket específico</label>
-              <input id="ticketEspecifico" name="ticketEspecifico" type="text" placeholder="Ej.: 41018"
-                     class="w-full rounded-md border-border"/>
+                <label for="ticketEspecifico" class="block text-sm font-medium mb-1">Ticket específico</label>
+                <input id="ticketEspecifico" name="ticketEspecifico" type="text" placeholder="Ej.: 41018"
+                    class="w-full rounded-md border-border"/>
             </div>
 
-            <!-- Cliente -->
+            <!-- Cliente (Selección múltiple con checkboxes) -->
             <div>
-              <label for="cliente" class="block text-sm font-medium mb-1">Cliente</label>
-              <select id="cliente" name="cliente" class="w-full rounded-md border-border">
-                <option value="">Todos los clientes</option>
-                <option>CENCINAI</option>
-                <option>ARESEP</option>
-                <option>PANI</option>
-                <option>CONAVI</option>
-                <option>INDER</option>
-                <option>SENARA</option>
-                <option>CTP</option>
-                <option>MSJ</option>
-                <option>DGAVC</option>
-                <option>SUTEL</option>
-                <option>911_SOIN</option>
-                <option>FND</option>
-                <option>IAFA</option>
-              </select>
+                <label for="cliente" class="block text-sm font-medium mb-1">Cliente (s)</label>
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Checkbox para "Todos los clientes" -->
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" id="allClients" name="cliente" value="todos" class="rounded-md border-border"/>
+                    Todos los clientes
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="cliente" value="CENCINAI" class="rounded-md border-border"/>
+                    CENCINAI
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="cliente" value="ARESEP" class="rounded-md border-border"/>
+                    ARESEP
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="cliente" value="PANI" class="rounded-md border-border"/>
+                    PANI
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="cliente" value="CONAVI" class="rounded-md border-border"/>
+                    CONAVI
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="cliente" value="INDER" class="rounded-md border-border"/>
+                    INDER
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="cliente" value="SENARA" class="rounded-md border-border"/>
+                    SENARA
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="cliente" value="CTP" class="rounded-md border-border"/>
+                    CTP
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="cliente" value="MSJ" class="rounded-md border-border"/>
+                    MSJ
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="cliente" value="DGAVC" class="rounded-md border-border"/>
+                    DGAVC
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="cliente" value="SUTEL" class="rounded-md border-border"/>
+                    SUTEL
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="cliente" value="911_SOIN" class="rounded-md border-border"/>
+                    911_SOIN
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="cliente" value="FND" class="rounded-md border-border"/>
+                    FND
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="cliente" value="IAFA" class="rounded-md border-border"/>
+                    IAFA
+                </label>
+                </div>
             </div>
 
-           <!-- Estado por NOMBRE -->
+            <!-- Estado por NOMBRE (Selección múltiple con checkboxes) -->
             <div>
-            <label for="estadoNombre" class="block text-sm font-medium mb-1">Estado por nombre</label>
-            <select id="estadoNombre" name="estadoNombre" class="w-full rounded-md border-border">
-                <option value="">Todos</option>
-                <option value="new">New</option>
-                <option value="pending customer info">Pending Customer Info</option>
-                <option value="pending customer accept">Pending Customer Accept</option>
-                <option value="pending third-party">Pending Third-Party</option>
-                <option value="rejected">Rejected</option>
-                <option value="work in progress">Work In Progress</option>
-                <option value="closed successful">Closed Successful</option>
-                <option value="open">Open</option>
-            </select>
+                <label for="estadoNombre" class="block text-sm font-medium mb-1">Estado (s)</label>
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Checkbox para "Todos los estados" -->
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" id="allStates" name="estadoNombre" value="todos" class="rounded-md border-border"/>
+                    Todos los estados
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="estadoNombre" value="new" class="rounded-md border-border"/>
+                    New
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="estadoNombre" value="pending customer info" class="rounded-md border-border"/>
+                    Pending Customer Info
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="estadoNombre" value="pending customer accept" class="rounded-md border-border"/>
+                    Pending Customer Accept
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="estadoNombre" value="pending third-party" class="rounded-md border-border"/>
+                    Pending Third-Party
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="estadoNombre" value="rejected" class="rounded-md border-border"/>
+                    Rejected
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="estadoNombre" value="work in progress" class="rounded-md border-border"/>
+                    Work In Progress
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="estadoNombre" value="closed successful" class="rounded-md border-border"/>
+                    Closed Successful
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" name="estadoNombre" value="open" class="rounded-md border-border"/>
+                    Open
+                </label>
+                </div>
             </div>
-          </div>
 
-          <!-- Columna derecha -->
-          <div class="lg:col-span-6 space-y-6">
+            </div>
+
+            <!-- Columna derecha -->
+            <div class="lg:col-span-6 space-y-6">
 
             <!-- Rango de fechas - creación ticket -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
+                <div>
                 <label for="fechaTicketInicio" class="block text-sm font-medium mb-1">Creación de ticket — desde</label>
                 <input id="fechaTicketInicio" name="fechaTicketInicio" type="date" class="w-full rounded-md border-border"/>
-              </div>
-              <div>
+                </div>
+                <div>
                 <label for="fechaTicketFin" class="block text-sm font-medium mb-1">Creación de ticket — hasta</label>
                 <input id="fechaTicketFin" name="fechaTicketFin" type="date" class="w-full rounded-md border-border"/>
-              </div>
+                </div>
             </div>
 
             <!-- Rango de fechas - cierre ticket -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
+                <div>
                 <label for="fechaCierreInicio" class="block text-sm font-medium mb-1">Cierre de ticket — desde</label>
                 <input id="fechaCierreInicio" name="fechaCierreInicio" type="date" class="w-full rounded-md border-border"/>
-              </div>
-              <div>
+                </div>
+                <div>
                 <label for="fechaCierreFin" class="block text-sm font-medium mb-1">Cierre de ticket — hasta</label>
                 <input id="fechaCierreFin" name="fechaCierreFin" type="date" class="w-full rounded-md border-border"/>
-              </div>
+                </div>
             </div>
 
             <!-- Rango de fechas - creación de historia -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
+                <div>
                 <label for="fechaHistInicio" class="block text-sm font-medium mb-1">Creación de historia — desde</label>
                 <input id="fechaHistInicio" name="fechaHistInicio" type="date" class="w-full rounded-md border-border"/>
-              </div>
-              <div>
+                </div>
+                <div>
                 <label for="fechaHistFin" class="block text-sm font-medium mb-1">Creación de historia — hasta</label>
                 <input id="fechaHistFin" name="fechaHistFin" type="date" class="w-full rounded-md border-border"/>
-              </div>
+                </div>
             </div>
+
             <!-- Acciones -->
             <div class="flex flex-wrap items-center gap-3">
                 <button type="submit" class="btn-apply-filters">Aplicar filtros</button>
                 <button type="reset" class="btn-clear">Limpiar</button>
             </div>
-          </div>
+            </div>
         </div>
-      </form>
+        </form>
 
-      <!-- Contenedor de resultados (placeholder) -->
-      <section id="resultados" class="mt-8">
-        <div class="rounded-xl border border-border bg-surface p-6 shadow-sm">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold">Resultados</h3>
-            <span id="resumen-filtros" class="text-sm text-gray-600">Sin filtros aplicados</span>
-          </div>
-          <p class="text-sm text-gray-500">Aquí se renderizarán los resultados del historial de ticket según los filtros.</p>
+    <!-- Contenedor de resultados (placeholder) -->
+    <section id="resultados" class="mt-8">
+    <div class="rounded-xl border border-border bg-surface p-6 shadow-sm">
+        <!-- Título con opción para editar -->
+        <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+            <h3 id="resultadosTitulo" class="text-lg font-semibold">
+            <span contenteditable="true" class="editable-title">Resultados</span>
+            </h3>
+            <span class="material-symbols-outlined text-sm cursor-pointer" id="editIcon">edit</span>
         </div>
-      </section>
+        <span class="text-sm text-gray-600">Sin filtros aplicados</span>
+        </div>
+        
+        <!-- Descripción de resultados -->
+        <p class="text-sm text-gray-500">Aquí se renderizarán los resultados del historial de ticket según los filtros.</p>
+
+        <!-- Botones de acción debajo de los resultados -->
+        <div class="mt-6 flex gap-4 justify-end">
+        <!-- Guardar -->
+        <button class="btn-save" title="Guardar resultados">
+            <span class="material-symbols-outlined">save</span> Guardar
+        </button>
+
+        <!-- Guardar como favorito -->
+        <button class="btn-favorite" title="Guardar como favorito">
+            <span class="material-symbols-outlined">star</span> Favorito
+        </button>
+
+        <!-- Exportar a Excel -->
+        <button class="btn-export" title="Exportar a Excel">
+            <span class="material-symbols-outlined">file_download</span> Excel
+        </button>
+        </div>
+    </div>
+    </section>
+
     </main>
   </div>
 
