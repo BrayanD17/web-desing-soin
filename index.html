@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gestión de Tickets</title>
+  <title>Gestión Integral de Servicios</title>
 
   <!-- Tipografía e íconos -->
   <link rel="preconnect" href="https://fonts.gstatic.com/"/>
@@ -30,8 +30,7 @@
 
         <!-- Título centrado en desktop -->
         <div class="flex-1 text-center">
-          <h1 class="text-2xl sm:text-3xl font-bold">Gestión de Tickets</h1>
-          <p class="text-white/80 text-sm sm:text-base mt-1">Seleccione una acción o cargue resultados previos</p>
+          <h1 class="text-2xl sm:text-3xl font-bold">Gestión Integral de Servicios</h1>
         </div>
 
         <!-- Placeholder a la derecha para balancear layout -->
@@ -46,7 +45,7 @@
         <!-- Acciones nuevas -->
         <section>
           <div class="mb-2 flex items-center gap-3">
-            <h2 class="text-2xl font-semibold">Acciones nuevas</h2>
+            <h2 class="text-2xl font-semibold">Consultas</h2>
             <span class="chip">Crear nueva consulta</span>
           </div>
 
@@ -69,79 +68,184 @@
                 <span class="text-xl font-medium">Historia de ticket</span>
               </button>
           </div>
-
         </section>
 
-        <!-- Resultados previos -->
-        <section class="flex flex-col">
-          <div class="mb-2 flex items-center gap-3">
-            <h2 class="text-2xl font-semibold">Resultados previos</h2>
-            <span class="chip">Reutilizar sesión anterior</span>
-          </div>
-
+                <!-- Sección agrupada: Sesiones Favoritas y Resultados Previos -->
+        <section class="flex flex-col gap-10">
+          <!-- Sesiones favoritas -->
           <div class="rounded-xl border border-border bg-surface p-6 shadow-sm">
-            <!-- Alto fijo + scroll visible -->
+            <div class="mb-2 flex items-center gap-3">
+              <h2 class="text-2xl font-semibold">Sesiones favoritas</h2>
+              <span class="chip">Seleccionar sesión anterior</span>
+            </div>
+
             <div class="custom-scrollbar max-h-96 overflow-y-auto pr-2">
               <ul class="divide-y divide-border">
-                <li class="item">
+                <li class="item flex justify-between items-center">
                   <div>
-                    <p class="item-title">Historial de ticket 44056</p>
+                    <p class="item-title">Historial SENARA 44056</p>
                     <p class="item-meta">15/09/2025 • 10:45</p>
                   </div>
-                  <button class="btn-primary">Cargar sesión</button>
-                </li>
-
-                <li class="item">
-                  <div>
-                    <p class="item-title">Notas de cliente PANI</p>
-                    <p class="item-meta">12/09/2025 • 16:20</p>
+                  <div class="flex gap-2">
+                    <button class="btn-execute" title="Ejecutar sesión">
+                      <span class="material-symbols-outlined">play_arrow</span>
+                    </button>
+                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                    <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión">
+                      <span class="material-symbols-outlined">content_copy</span>
+                    </button>
                   </div>
-                  <button class="btn-primary">Cargar sesión</button>
                 </li>
-
-                <li class="item">
+                <li class="item flex justify-between items-center">
                   <div>
-                    <p class="item-title">Cierre de tickets mayo 2025</p>
-                    <p class="item-meta">05/09/2025 • 09:02</p>
+                    <p class="item-title">Historial SENARA 44056</p>
+                    <p class="item-meta">15/09/2025 • 10:45</p>
                   </div>
-                  <button class="btn-primary">Cargar sesión</button>
+                  <div class="flex gap-2">
+                    <button class="btn-execute" title="Ejecutar sesión">
+                      <span class="material-symbols-outlined">play_arrow</span>
+                    </button>
+                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                    <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión">
+                      <span class="material-symbols-outlined">content_copy</span>
+                    </button>
+                  </div>
                 </li>
-
-                <li class="item">
+                <li class="item flex justify-between items-center">
                   <div>
-                    <p class="item-title">Historial de ticket Melvis Septiembre</p>
-                    <p class="item-meta">08/09/2025 • 11:37</p>
+                    <p class="item-title">Historial SENARA 44056</p>
+                    <p class="item-meta">15/09/2025 • 10:45</p>
                   </div>
-                  <button class="btn-primary">Cargar sesión</button>
+                  <div class="flex gap-2">
+                    <button class="btn-execute" title="Ejecutar sesión">
+                      <span class="material-symbols-outlined">play_arrow</span>
+                    </button>
+                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                    <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión">
+                      <span class="material-symbols-outlined">content_copy</span>
+                    </button>
+                  </div>
                 </li>
-
-                <li class="item">
+                <li class="item flex justify-between items-center">
                   <div>
-                    <p class="item-title">Notas Javier Vargas Villalta</p>
-                    <p class="item-meta">20/08/2025 • 14:10</p>
+                    <p class="item-title">Historial SENARA 44056</p>
+                    <p class="item-meta">15/09/2025 • 10:45</p>
                   </div>
-                  <button class="btn-primary">Cargar sesión</button>
+                  <div class="flex gap-2">
+                    <button class="btn-execute" title="Ejecutar sesión">
+                      <span class="material-symbols-outlined">play_arrow</span>
+                    </button>
+                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                    <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión">
+                      <span class="material-symbols-outlined">content_copy</span>
+                    </button>
+                  </div>
                 </li>
-
-                <li class="item">
+                <li class="item flex justify-between items-center">
                   <div>
-                    <p class="item-title">Cierre de tickets Enero</p>
-                    <p class="item-meta">31/01/2025 • 23:55</p>
+                    <p class="item-title">Historial SENARA 44056</p>
+                    <p class="item-meta">15/09/2025 • 10:45</p>
                   </div>
-                  <button class="btn-primary">Cargar sesión</button>
+                  <div class="flex gap-2">
+                    <button class="btn-execute" title="Ejecutar sesión">
+                      <span class="material-symbols-outlined">play_arrow</span>
+                    </button>
+                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                    <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión">
+                      <span class="material-symbols-outlined">content_copy</span>
+                    </button>
+                  </div>
                 </li>
-
-                <!-- Duplica más ítems para probar el scroll -->
+                <li class="item flex justify-between items-center">
+                  <div>
+                    <p class="item-title">Historial SENARA 44056</p>
+                    <p class="item-meta">15/09/2025 • 10:45</p>
+                  </div>
+                  <div class="flex gap-2">
+                    <button class="btn-execute" title="Ejecutar sesión">
+                      <span class="material-symbols-outlined">play_arrow</span>
+                    </button>
+                    <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                    <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión">
+                      <span class="material-symbols-outlined">content_copy</span>
+                    </button>
+                  </div>
+                </li>
+                <!-- Repite los demás ítems aquí -->
               </ul>
             </div>
           </div>
 
+          <!-- Resultados previos (desplegable) -->
+          <div class="flex flex-col">
+            <div class="mb-2 flex items-center gap-3 cursor-pointer" id="toggleResults">
+              <h2 class="text-2xl font-semibold">Resultados previos</h2>
+              <span class="chip">Seleccionar resultado anterior</span>
+              <!-- Flecha para desplegar/ocultar -->
+              <span id="toggleIcon" class="material-symbols-outlined">expand_more</span>
+            </div>
+            <div id="resultsPrevios" class="hidden rounded-xl border border-border bg-surface p-6 shadow-sm">
+              <div class="custom-scrollbar max-h-96 overflow-y-auto pr-2">
+                <ul class="divide-y divide-border">
+                  <li class="item flex justify-between items-center">
+                    <div>
+                      <p class="item-title">Historial SENARA 44056</p>
+                      <p class="item-meta">15/09/2025 • 10:45</p>
+                    </div>
+                    <div class="flex gap-2">
+                      <button class="btn-execute" title="Ejecutar sesión">
+                        <span class="material-symbols-outlined">play_arrow</span>
+                      </button>
+                      <button class="btn-delete" onclick="eliminarSesion(this)" title="Eliminar sesión">
+                        <span class="material-symbols-outlined">delete</span>
+                      </button>
+                      <button class="btn-edit" onclick="editarSesion(this)" title="Editar sesión">
+                        <span class="material-symbols-outlined">edit</span>
+                      </button>
+                      <button class="btn-duplicate" onclick="duplicarSesion(this)" title="Duplicar sesión">
+                        <span class="material-symbols-outlined">content_copy</span>
+                      </button>
+                    </div>
+                  </li>
+                  <!-- Repite las demás sesiones aquí -->
+                </ul>
+              </div>
+            </div>
+          </div>
         </section>
-
       </div>
     </main>
   </div>
-
   <!-- Lógica (placeholder) -->
   <script src="./app.js"></script>
 </body>

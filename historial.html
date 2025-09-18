@@ -87,63 +87,21 @@
               </select>
             </div>
 
-            <!-- Estado por NOMBRE -->
+           <!-- Estado por NOMBRE -->
             <div>
-              <label for="estadoNombre" class="block text-sm font-medium mb-1">Estado por nombre</label>
-              <select id="estadoNombre" name="estadoNombre" class="w-full rounded-md border-border">
+            <label for="estadoNombre" class="block text-sm font-medium mb-1">Estado por nombre</label>
+            <select id="estadoNombre" name="estadoNombre" class="w-full rounded-md border-border">
                 <option value="">Todos</option>
-                <option value="new">new</option>
-                <option value="closed successful">closed successful</option>
-                <option value="closed unsuccessful">closed unsuccessful</option>
-                <option value="open">open</option>
-                <option value="removed">removed</option>
-                <option value="pending reminder">pending reminder</option>
-                <option value="pending auto close+">pending auto close+</option>
-                <option value="pending auto close-">pending auto close-</option>
-                <option value="merged">merged</option>
-                <option value="closed with workaround">closed with workaround</option>
-                <option value="En_Curso">En_Curso</option>
-                <option value="Esperando Release Manager">Esperando Release Manager</option>
-                <option value="Pending Customer Accept">Pending Customer Accept</option>
-                <option value="Pending Customer Info">Pending Customer Info</option>
-                <option value="Pending Customer RCA">Pending Customer RCA</option>
-                <option value="Pending RFC">Pending RFC</option>
-                <option value="Pending Third-Party">Pending Third-Party</option>
-                <option value="Re-Open">Re-Open</option>
-                <option value="Rejected">Rejected</option>
-                <option value="Work In Progress">Work In Progress</option>
-              </select>
-              <p class="text-xs text-gray-500 mt-1">Si eliges un estado por nombre, se ignorará el estado por ID (y viceversa).</p>
+                <option value="new">New</option>
+                <option value="pending customer info">Pending Customer Info</option>
+                <option value="pending customer accept">Pending Customer Accept</option>
+                <option value="pending third-party">Pending Third-Party</option>
+                <option value="rejected">Rejected</option>
+                <option value="work in progress">Work In Progress</option>
+                <option value="closed successful">Closed Successful</option>
+                <option value="open">Open</option>
+            </select>
             </div>
-
-            <!-- Estado por ID -->
-            <div>
-              <label for="estadoId" class="block text-sm font-medium mb-1">Estado por ID</label>
-              <select id="estadoId" name="estadoId" class="w-full rounded-md border-border">
-                <option value="">Todos</option>
-                <option value="1">1 — new</option>
-                <option value="2">2 — closed successful</option>
-                <option value="3">3 — closed unsuccessful</option>
-                <option value="4">4 — open</option>
-                <option value="5">5 — removed</option>
-                <option value="6">6 — pending reminder</option>
-                <option value="7">7 — pending auto close+</option>
-                <option value="8">8 — pending auto close-</option>
-                <option value="9">9 — merged</option>
-                <option value="10">10 — closed with workaround</option>
-                <option value="11">11 — En_Curso</option>
-                <option value="12">12 — Esperando Release Manager</option>
-                <option value="13">13 — Pending Customer Accept</option>
-                <option value="14">14 — Pending Customer Info</option>
-                <option value="15">15 — Pending Customer RCA</option>
-                <option value="16">16 — Pending RFC</option>
-                <option value="17">17 — Pending Third-Party</option>
-                <option value="18">18 — Re-Open</option>
-                <option value="19">19 — Rejected</option>
-                <option value="20">20 — Work In Progress</option>
-              </select>
-            </div>
-
           </div>
 
           <!-- Columna derecha -->
@@ -184,28 +142,11 @@
                 <input id="fechaHistFin" name="fechaHistFin" type="date" class="w-full rounded-md border-border"/>
               </div>
             </div>
-
-            <!-- Historia completa / Datos relevantes -->
-            <div>
-              <span class="block text-sm font-medium mb-2">Tipo de salida</span>
-              <div class="flex flex-wrap items-center gap-4">
-                <label class="inline-flex items-center gap-2">
-                  <input type="radio" name="detalle" value="completa" class="rounded border-border" checked>
-                  <span>Historia completa</span>
-                </label>
-                <label class="inline-flex items-center gap-2">
-                  <input type="radio" name="detalle" value="relevante" class="rounded border-border">
-                  <span>Datos relevantes de la historia</span>
-                </label>
-              </div>
-            </div>
-
             <!-- Acciones -->
             <div class="flex flex-wrap items-center gap-3">
-              <button type="submit" class="btn-primary">Aplicar filtros</button>
-              <button type="reset" class="btn-ghost">Limpiar</button>
+                <button type="submit" class="btn-apply-filters">Aplicar filtros</button>
+                <button type="reset" class="btn-clear">Limpiar</button>
             </div>
-
           </div>
         </div>
       </form>

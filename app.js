@@ -23,3 +23,16 @@ document.addEventListener('click', (e) => {
     window.location.href = href;
   }
 });
+// Maneja el toggle de la sección "Resultados previos"
+document.getElementById('toggleResults').addEventListener('click', function() {
+  const results = document.getElementById('resultsPrevios');
+  const icon = document.getElementById('toggleIcon');
+  
+  // Cambia el estado de visibilidad
+  results.classList.toggle('hidden');
+  
+  // Cambia la flecha (abre/cierra)
+  icon.textContent = results.classList.contains('hidden') ? 'expand_more' : 'expand_less';
+});
+
+

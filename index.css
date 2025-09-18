@@ -7,6 +7,13 @@
   --surface: #ffffff;            /* blanco tarjetas */
   --border: #e5e7eb;             /* bordes suaves */
   --accent-green: #16a34a;       /* verde íconos */
+  --accent-green-dark: #15803d;  /* verde oscuro para hover */
+  --accent-red: #dc2626;          /* Rojo principal */
+  --accent-red-dark: #b91c1c;     /* Rojo más oscuro para hover */
+  --accent-yellow: #f59e0b;       /* Amarillo principal */
+  --accent-yellow-dark: #d97706;  /* Amarillo más oscuro para hover */
+  --accent-orange: #f97316;     /* Naranja más claro para Duplicar */
+  --accent-orange-dark: #e76f00; /* Naranja más oscuro para hover */
   --page: rgba(11, 11, 12, 0.02);/* fondo muy claro */
 }
 
@@ -102,9 +109,83 @@ html, body {
   color: var(--text-secondary);
 }
 
-/* Botones */
-.btn-primary {
-  background: var(--primary-color);
+/* Botones con solo íconos, sin fondo */
+.btn-execute, .btn-delete, .btn-edit, .btn-duplicate {
+  background: none;           /* Sin fondo */
+  color: var(--text-primary); /* El color inicial del ícono */
+  font-size: 2rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 120ms ease, transform 120ms ease; /* Solo cambios de color y efecto de transformación */
+  cursor: pointer;
+}
+
+/* Estado inicial: color de los iconos según la acción */
+.btn-execute span {
+  color: var(--accent-green); /* Verde para "Ejecutar" */
+}
+
+.btn-delete span {
+  color: var(--accent-red);   /* Rojo para "Eliminar" */
+}
+
+.btn-edit span {
+  color: var(--accent-yellow); /* Amarillo para "Editar" */
+}
+
+.btn-duplicate span {
+  color: var(--accent-orange); /* Naranja para "Duplicar" */
+}
+
+/* Hover - Cambio de color al hacer hover sobre el icono */
+.btn-execute:hover span {
+  color: var(--accent-green-dark); /* Verde oscuro para "Ejecutar" */
+  transform: scale(1.1); /* Efecto de ampliación */
+}
+
+.btn-delete:hover span {
+  color: var(--accent-red-dark); /* Rojo oscuro para "Eliminar" */
+  transform: scale(1.1);
+}
+
+.btn-edit:hover span {
+  color: var(--accent-yellow-dark); /* Amarillo oscuro para "Editar" */
+  transform: scale(1.1);
+}
+
+.btn-duplicate:hover span {
+  color: var(--accent-orange-dark); /* Naranja oscuro para "Duplicar" */
+  transform: scale(1.1);
+}
+
+/* Iconos dentro de los botones */
+.material-symbols-outlined {
+  font-size: 2rem;  /* Ajustamos el tamaño del ícono */
+  transition: color 120ms ease, transform 120ms ease; /* Aseguramos que solo el icono se transforme */
+}
+
+/* Tooltip - Mensaje al pasar sobre los botones */
+button[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+/* Botón Aplicar Filtros - Verde */
+.btn-apply-filters {
+  background: var(--accent-green);  /* Fondo verde */
   color: #fff;
   font-weight: 700;
   font-size: 0.875rem;
@@ -113,22 +194,27 @@ html, body {
   transition: background 120ms ease;
   border: none;
 }
-.btn-primary:hover {
-  background: var(--primary-color-600);
+
+.btn-apply-filters:hover {
+  background: var(--accent-green-dark); /* Hover verde más oscuro */
 }
-.btn-ghost {
-  background: #fff;
-  color: var(--text-primary);
-  font-weight: 500;
+
+/* Botón Limpiar - Azul */
+.btn-clear {
+  background: var(--primary-color);  /* Fondo azul */
+  color: #fff;
+  font-weight: 700;
   font-size: 0.875rem;
   padding: 0.5rem 1rem;
-  border: 1px solid var(--border);
   border-radius: 0.5rem;
   transition: background 120ms ease;
+  border: none;
 }
-.btn-ghost:hover {
-  background: #f9fafb;
+
+.btn-clear:hover {
+  background: var(--primary-color-600);  /* Hover azul más oscuro */
 }
+
 
 /* Scrollbar del panel de “Resultados previos” */
 .custom-scrollbar {
@@ -153,4 +239,23 @@ html, body {
 .custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: #cbd5e1 #f1f5f9;
+}
+/* Flecha para el toggle */
+#toggleIcon {
+  transition: transform 200ms ease;
+}
+
+/* Estado del toggle cuando está abierto */
+#resultsPrevios:not(.hidden) ~ #toggleResults #toggleIcon {
+  transform: rotate(180deg); /* Gira la flecha cuando se muestra la sección */
+}
+
+/* Resultados previos ocultos por defecto */
+#resultsPrevios {
+  display: none;
+}
+
+/* Flecha para el toggle */
+#toggleResults {
+  cursor: pointer;
 }
